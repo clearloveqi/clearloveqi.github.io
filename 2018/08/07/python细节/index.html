@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>Hello World | Welcome</title>
+<title>python细节 | Welcome</title>
 
 
     <link rel="alternate" href="/atom.xml" title="Welcome" type="application/atom+xml">
@@ -132,9 +132,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="Hello World">
+        <h1 id="python细节">
             
-	            Hello World
+	            python细节
             
         </h1>
         <div class="post-meta">
@@ -153,6 +153,14 @@
         <span class="tags-meta">
             
                 
+                    <a href="/tags/python" title='python'>
+                        python
+                    </a>
+                
+                    <a href="/tags/细节" title='细节'>
+                        细节
+                    </a>
+                
             
         </span>
     </span>
@@ -162,7 +170,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/08/08</span>
+            <span class="date-meta">2018/08/07</span>
         </span>
     
 </div>
@@ -172,16 +180,65 @@
     </div>
     
     <div class="post-body post-content">
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h2 id="内置函数之join"><a href="#内置函数之join" class="headerlink" title="内置函数之join"></a>内置函数之join</h2><p>爬虫中曾遇见一种问题<br>美元符号，美元，美分是在三个不同的标签中，将之全部拿到之后，传入scrapy.items之后变成了列表<br>此时可以使用<strong>‘.’.join</strong>方法，此时列表的中括号可以被去除：</p>
+<pre><code>item = {}
+item[&apos;aa&apos;] = [&apos;14&apos;,&apos;99&apos;]
+c = &apos;$&apos;+&apos;.&apos;.join(item[&apos;price&apos;])
+print(c)
+</code></pre><p>结果为：</p>
+<pre><code>$14.99
+</code></pre><h2 id="内置函数之strip-rstrip-lstrip"><a href="#内置函数之strip-rstrip-lstrip" class="headerlink" title="内置函数之strip,rstrip,lstrip"></a>内置函数之strip,rstrip,lstrip</h2><h3 id="rstrip"><a href="#rstrip" class="headerlink" title="rstrip"></a>rstrip</h3><p><strong>删除 string 字符串末尾的指定字符（默认为空格</strong></p>
+<pre><code>str = &quot;     this is string example....wow!!!     &quot;;
+print str.rstrip();
+str = &quot;88888888this is string example....wow!!!8888888&quot;;
+print str.rstrip(&apos;8&apos;);
+</code></pre><p>结果为：</p>
+<pre><code>this is string example....wow!!!
+88888888this is string example....wow!!!
+</code></pre><h3 id="lstrip-方法"><a href="#lstrip-方法" class="headerlink" title="lstrip() 方法"></a>lstrip() 方法</h3><p><strong>用于截掉字符串左边的空格或指定字符。</strong></p>
+<pre><code>str = &quot;     this is string example....wow!!!     &quot;;
+print( str.lstrip() );
+str = &quot;88888888this is string example....wow!!!8888888&quot;;
+print( str.lstrip(&apos;8&apos;) );
+</code></pre><p>以上实例输出结果如下：</p>
+<pre><code>this is string example....wow!!!
+this is string example....wow!!!8888888
+</code></pre><h2 id="关于urlopen"><a href="#关于urlopen" class="headerlink" title="关于urlopen"></a>关于urlopen</h2><pre><code>#处理get请求，不传data，则为get请求
 
+import urllib
+from urllib.request import urlopen
+from urllib.parse import urlencode
+
+url=&apos;http://www.xxx.com/login&apos;
+data={&quot;username&quot;:&quot;admin&quot;,&quot;password&quot;:123456}
+req_data=urlencode(data)#将字典类型的请求数据转变为url编码
+res=urlopen(url+&apos;?&apos;+req_data)#通过urlopen方法访问拼接好的url
+res=res.read().decode()#read()方法是读取返回数据内容，decode是转换返回数据的bytes格式为str
+
+print(res)
+#处理post请求,如果传了data，则为post请求
+
+import urllib
+from urllib.request import Request
+from urllib.parse import urlencode
+
+url=&apos;http://www.xxx.com/login&apos;
+data={&quot;username&quot;:&quot;admin&quot;,&quot;password&quot;:123456}
+data=urlencode(data)#将字典类型的请求数据转变为url编码
+data=data.encode(&apos;ascii&apos;)#将url编码类型的请求数据转变为bytes类型
+req_data=Request(url,data)#将url和请求数据处理为一个Request对象，供urlopen调用
+with urlopen(req_data) as res:
+    res=res.read().decode()#read()方法是读取返回数据内容，decode是转换返回数据的bytes格式为str
+
+print(res)
+</code></pre><h2 id="url处理"><a href="#url处理" class="headerlink" title="url处理"></a>url处理</h2><p>处理从相对url路径得到绝对url路径</p>
+<pre><code>from urllib.parse import urljoin
+u = &apos;http://book_3232&apos;
+d = &apos;/book_3232/sdasd&apos;
+b = d.split(&apos;/&apos;)[2]
+a = urljoin(u, b)
+print(a)
+</code></pre>
     </div>
 
     <div class="post-footer">
@@ -198,11 +255,11 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-    
-        <a href="/2018/08/07/python细节/" class="next-post btn btn-default" title='python细节'>
-            <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">python细节</span><i class="fa fa-angle-right fa-fw"></i>
+        <a href="/2018/08/08/hello-world/" class="pre-post btn btn-default" title='Hello World'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">Hello World</span>
         </a>
+    
     
 </div>
 
@@ -236,7 +293,7 @@
     <div class="widget">
         <h3 class="title">Table of Contents</h3>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#内置函数之join"><span class="toc-text">内置函数之join</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#内置函数之strip-rstrip-lstrip"><span class="toc-text">内置函数之strip,rstrip,lstrip</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rstrip"><span class="toc-text">rstrip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#lstrip-方法"><span class="toc-text">lstrip() 方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于urlopen"><span class="toc-text">关于urlopen</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#url处理"><span class="toc-text">url处理</span></a></li></ol>
         
     </div>
 </aside>
