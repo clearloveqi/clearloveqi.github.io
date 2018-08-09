@@ -1822,7 +1822,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #574e65;
+  background: #55268f;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3016,7 +3016,4 @@ pre .addition {
 }
 pre .deletion {
   background: #ffeef0;
-}
-.container {
-  background-color: rgba(0,0,0,0.75);
 }
