@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Welcome">
 <meta property="og:description" content="安装环境deepin 15.3 X64(教程也适用于其他linux系统) 下载安装下载地址:https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.0.tgz(或者到官网上下载别的版本) 完成下载后,把软件包移动到软件安装的目录下,我这里是/usr/local/。 解压:tar -zxvf mongodb-linux-x86_64-2.6">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-09T06:12:15.164Z">
+<meta property="og:updated_time" content="2018-08-09T09:31:31.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pymongodb">
 <meta name="twitter:description" content="安装环境deepin 15.3 X64(教程也适用于其他linux系统) 下载安装下载地址:https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.0.tgz(或者到官网上下载别的版本) 完成下载后,把软件包移动到软件安装的目录下,我这里是/usr/local/。 解压:tar -zxvf mongodb-linux-x86_64-2.6">
@@ -258,7 +258,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="莫名其妙">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -337,15 +337,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-      <div>
-        
-          <div>
-    
-        <div style="text-align:center;color: #636363;font-size:14px;letter-spacing: 10px">本文结束<i class="fa fa-bell"></i>感谢您的阅读</div>
-    
-</div>
-        
-      </div>
+      
       
       
 
@@ -358,24 +350,50 @@
 <p>创建mongodb数据库存放路径:mkdir -p /data/db</p>
 <p>创建mongodb数据库日志存放路径:mkdir -p /usr/local/mongodb/log/(存放在安装路径下)</p>
 <h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><p>启动mongodb服务:/usr/local/mongodb/bin/mongod –dbpath=/data/db –logpath=/usr/local/mongodb/log/mongodb.log –logappend –port 27017 –fork(若出现错误,可能是权限不够)</p>
-<p>–dbpath 数据库路径(数据文件)<br>–logpath 数据库日志文件路径<br>–port 启用端口号<br>–fork 在后台运行<br>–auth 是否需要验证权限登录(用户名和密码)</p>
-<p>进入mongodb数据库控制台:</p>
-<p>$ cd /usr/local/mongodb/bin/<br>/usr/local/mongodb/bin$ ./mongo<br>deepin中安装mongodb<br>mongodb控制台</p>
-<p>3.退出:exit</p>
+<pre><code>--dbpath 数据库路径(数据文件)
+--logpath 数据库日志文件路径
+--port 启用端口号
+--fork 在后台运行
+--auth 是否需要验证权限登录(用户名和密码)
+</code></pre><p>进入mongodb数据库控制台:</p>
+<pre><code>$ cd /usr/local/mongodb/bin/
+/usr/local/mongodb/bin$ ./mongo
+deepin中安装mongodb
+mongodb控制台
+</code></pre><p>3.退出:exit</p>
 <p>设置mongodb<br>添加安装路径到 path中:<br>$ vim /etc/profile<br>添加一下代码到文件的最后一行,并保存:<br>export PATH=$PATH:/usr/local/mongodb/bin<br>使设置生效:source /etc/profile<br>进入控制台:mongo(在任意位置)<br>设置 mongodb开机自启:</p>
 <p>编辑mongodb配置文件,设置启动参数:vim /usr/local/mongodb/mongodb.conf(没有就新建一个)</p>
 <p>加入以下参数并保存:</p>
-<p>dbpath=/data/db #数据库路径<br>port=27017 #端口号<br>fork=true #设置后台运行<br>logappend=true<br>shardsvr=true<br>pidfilepath=/usr/local/mongodb/mongo.pid<br>logpath=/usr/local/mongodb/log/mongodb.log #日志输出文件路径<br>directoryperdb=true<br>auth=false #关闭认证</p>
-<p>将usr/local/mongodb/bin/mongod –config /usr/local/mongodb/mongodb.conf添加到 /etc/rc.local 中。(若没效果,可能是权限的问题,在前面加上sudo)</p>
+<pre><code>dbpath=/data/db #数据库路径
+port=27017 #端口号
+fork=true #设置后台运行
+logappend=true
+shardsvr=true
+pidfilepath=/usr/local/mongodb/mongo.pid
+logpath=/usr/local/mongodb/log/mongodb.log #日志输出文件路径
+directoryperdb=true
+auth=false #关闭认证
+</code></pre><p>将usr/local/mongodb/bin/mongod –config /usr/local/mongodb/mongodb.conf添加到 /etc/rc.local 中。(若没效果,可能是权限的问题,在前面加上sudo)</p>
 <p>重启电脑,打开命令行,输入mongo,即可验证。</p>
-<p>参考：<a href="https://www.aliyun.com/jiaocheng/135400.html" target="_blank" rel="noopener">https://www.aliyun.com/jiaocheng/135400.html</a></p>
+<p>开启mongodb：</p>
+<pre><code>sudo systemctl start mongod 
+</code></pre><p>参考：<a href="https://www.aliyun.com/jiaocheng/135400.html" target="_blank" rel="noopener">https://www.aliyun.com/jiaocheng/135400.html</a></p>
 
       
+
     </div>
     
     
     
-
+      <div>
+        
+          <div>
+    
+        <div style="text-align:center;color: #636363;font-size:14px;letter-spacing: 10px">本文结束<i class="fa fa-bell"></i>感谢您的阅读</div>
+    
+</div>
+        
+      </div>
     
 
     
@@ -477,6 +495,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="莫名其妙" />
+            
               <p class="site-author-name" itemprop="name">莫名其妙</p>
               <p class="site-description motion-element" itemprop="description">天下事有难易乎？为之，则难者亦易矣；不为，则易者亦难矣。</p>
           </div>
@@ -488,7 +510,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -499,7 +521,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -510,7 +532,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
